@@ -13,6 +13,8 @@
 @media(max-width:560px){main{padding:.6rem}.topbar{padding:1.2rem}.tabs{padding:.55rem}.section-head{align-items:flex-start}.detail-card dl{grid-template-columns:1fr}.cost-grid{grid-template-columns:1fr}.photo-strip{grid-template-columns:repeat(2,1fr)}footer{flex-direction:column}.h1{left:71%}.h2{left:63%}.h3{left:55%}}
 .h1{left:74%;top:56%}.h2{left:79%;top:57%}.h3{left:68%;top:49%}.h4{left:84%;top:39%}.h5{left:76%;top:34%}.h6{left:86%;top:58%}.h7{left:77%;top:53%}.h8{left:91%;top:48%}
 @media(max-width:560px){.h1{left:74%}.h2{left:79%}.h3{left:68%}}
+.checklist-actions{display:flex;align-items:center;gap:1rem}.machine-fields,.signoff-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin-bottom:1rem}.machine-fields label,.signoff-grid label{display:grid;gap:.35rem;font-weight:800;color:#414b50}.machine-fields input,.signoff-grid input,.signoff-grid textarea,.checklist-table textarea{width:100%;border:1px solid #aeb7bb;border-radius:.35rem;background:#fff;padding:.55rem;font:inherit}.checklist-note{margin-bottom:1rem;padding:1rem;border-left:5px solid var(--amber);background:#fff6df}.checklist-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:.8rem;background:#fff}.checklist-table{width:100%;min-width:1050px;border-collapse:collapse}.checklist-table th{padding:.8rem;text-align:left;background:#29343a;color:#fff}.checklist-table td{vertical-align:top;padding:.8rem;border-top:1px solid var(--line)}.checklist-table td:first-child{width:24%}.checklist-table td:nth-child(2){width:35%}.checklist-table td:nth-child(3){width:17%}.checklist-table strong,.checklist-table span{display:block}.checklist-table span{margin-top:.35rem;color:#59646a;font-size:.88rem}.checklist-table td:nth-child(3) label{display:block;white-space:nowrap;margin-bottom:.35rem}.checklist-table textarea{min-height:7rem;resize:vertical}.signoff-grid{grid-template-columns:1fr 1fr;margin-top:1rem}.signoff-grid textarea{min-height:6rem}@media(max-width:920px){.checklist-head,.checklist-actions{align-items:flex-start;flex-direction:column}.machine-fields{grid-template-columns:1fr 1fr}}@media(max-width:560px){.machine-fields,.signoff-grid{grid-template-columns:1fr}}
+@media print{.topbar,.tabs,footer,.checklist-actions .section-copy{display:none!important}body{background:#fff}.panel{display:none!important}#checklist{display:block!important}main{max-width:none;padding:0}.checklist-head{padding:.4rem 0}.machine-fields{grid-template-columns:repeat(4,1fr)}.checklist-table-wrap{overflow:visible}.checklist-table{min-width:0;font-size:10px}.checklist-table th,.checklist-table td{padding:4px}.checklist-table textarea{min-height:48px}.checklist-note{font-size:10px;padding:6px}.signoff-grid textarea{min-height:48px}}
 </style>
 </head>
 <body>
@@ -28,6 +30,7 @@
     <button class="tab active" data-target="map">Cutaway map</button>
     <button class="tab" data-target="evidence">Evidence register</button>
     <button class="tab" data-target="modes">Clean-out modes & costs</button>
+    <button class="tab" data-target="checklist">Field checklist</button>
     <button class="tab" data-target="sources">Sources</button>
   </nav>
 
@@ -89,6 +92,45 @@
       <div class="mode-grid" id="mode-grid"></div>
       <div class="cost-note">
         <strong>Recommended sequence:</strong> establish a dealer-verified baseline, restore damaged OEM access, run a documented trial clean, then select the routine or identity-preserved mode by crop risk. No external transfer circuit is proposed.
+      </div>
+    </section>
+
+    <section id="checklist" class="panel">
+      <div class="section-head wide checklist-head">
+        <div><p class="eyebrow dark">NO-SERIAL BASELINE</p><h2>Field verification checklist</h2></div>
+        <div class="checklist-actions"><p class="section-copy">Use during dealer inspection or when the machine arrives. Do not operate or remove guards solely to complete this sheet.</p><button class="quiet-btn" onclick="window.print()">Print checklist</button></div>
+      </div>
+
+      <div class="machine-fields" aria-label="Machine inspection details">
+        <label>Machine PIN / serial <input type="text" placeholder="Record when available"></label>
+        <label>Inspection date <input type="date"></label>
+        <label>Inspector <input type="text"></label>
+        <label>Separator hours <input type="text" inputmode="decimal"></label>
+      </div>
+
+      <div class="checklist-note"><strong>Isolation first:</strong> park safely, lower attachments, stop the engine, remove the key and isolate stored energy. Use the serial-matched operator's manual before opening any access. Never enter a grain tank or work near moving components.</div>
+
+      <div class="checklist-table-wrap">
+        <table class="checklist-table">
+          <thead><tr><th>Access point and OEM evidence</th><th>What to photograph and verify</th><th>Condition</th><th>Finding / action</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1 · Clean-grain elevator boot door</strong><span>Manual 6-146 / PDF 302; 7-125 / PDF 453<br>Fig. 80.101.AR[02], item 5<br>84149722 / 87330124—serial dependent</span></td><td>Photograph the complete lower clean-grain elevator boot square-on, then a close view of the removable door, fasteners, seal and the cavity after safe opening.</td><td><label><input type="checkbox"> Present</label><label><input type="checkbox"> Opens</label><label><input type="checkbox"> Seals</label><label><input type="checkbox"> Residue</label></td><td><textarea aria-label="Clean-grain elevator boot finding"></textarea></td></tr>
+            <tr><td><strong>2 · Tailings elevator boot door</strong><span>Manual 6-146 / PDF 302<br>Fig. 74.140.AK[03], item 2<br>87622926 reported—verify 6088 applicability</span></td><td>Photograph the full lower tailings-elevator housing and the curved removable boot door. Include fasteners, seal edges and retained material after safe opening.</td><td><label><input type="checkbox"> Present</label><label><input type="checkbox"> Opens</label><label><input type="checkbox"> Seals</label><label><input type="checkbox"> Residue</label></td><td><textarea aria-label="Tailings elevator boot finding"></textarea></td></tr>
+            <tr><td><strong>3 · Auger-bed sliding cover</strong><span>Manual 6-127 / PDF 283<br>Fig. RI08F002; right side; six nuts</span></td><td>Photograph the entire right side of the auger bed, all six retaining nuts and the cover in normal and slot-aligned positions. Do not substitute the large black sheet or nearby brackets.</td><td><label><input type="checkbox"> Present</label><label><input type="checkbox"> Slides</label><label><input type="checkbox"> Secure</label><label><input type="checkbox"> Residue</label></td><td><textarea aria-label="Auger-bed cover finding"></textarea></td></tr>
+            <tr><td><strong>4 · Vertical-unloader clean-out door</strong><span>Manual 6-147 / PDF 303<br>Fig. RH08A049<br>Exact service item unresolved</span></td><td>Photograph the lower end of the vertical unloader tube, including the complete door perimeter, latch/fasteners, adjoining auger junction and interior after safe opening.</td><td><label><input type="checkbox"> Present</label><label><input type="checkbox"> Opens</label><label><input type="checkbox"> Seals</label><label><input type="checkbox"> Residue</label></td><td><textarea aria-label="Vertical unloader finding"></textarea></td></tr>
+            <tr><td><strong>5 · Grain-tank unloader-auger doors</strong><span>Manual 6-147 / PDF 303<br>Fig. RH07G016; right-hand side<br>Fig. 80.150.AI region</span></td><td>From outside the tank, photograph every right-hand clean-out door serving the grain-tank augers. Number each door and capture its latch, seal, interior and relationship to the horizontal augers.</td><td><label><input type="checkbox"> All present</label><label><input type="checkbox"> Open</label><label><input type="checkbox"> Seal</label><label><input type="checkbox"> Residue</label></td><td><textarea aria-label="Grain tank auger doors finding"></textarea></td></tr>
+            <tr><td><strong>6 · Cleaning-shoe rear door</strong><span>Manual 6-142 / PDF 298<br>Fig. 74.101.AU, item 1<br>87598213—shoe door</span></td><td>Photograph the complete rear of the cleaning shoe, then the whole door and latch square-on. Capture the sieve ends and cavity only after safe access is established.</td><td><label><input type="checkbox"> Present</label><label><input type="checkbox"> Opens</label><label><input type="checkbox"> Seals</label><label><input type="checkbox"> Residue</label></td><td><textarea aria-label="Cleaning shoe rear door finding"></textarea></td></tr>
+            <tr><td><strong>7 · Tailings-auger trough slots</strong><span>Manual 6-146 / PDF 302<br>Fig. RD01H033; left-hand troughs<br>No service item mapped</span></td><td>Photograph the entire left-hand tailings-auger trough and each clean-out slot in sequence. Include one wider view proving position and close views showing blockage or damage.</td><td><label><input type="checkbox"> Located</label><label><input type="checkbox"> Clear</label><label><input type="checkbox"> Undamaged</label><label><input type="checkbox"> Residue</label></td><td><textarea aria-label="Tailings auger slots finding"></textarea></td></tr>
+            <tr><td><strong>8 · Radiator-compartment plug</strong><span>Manual 7-135 / PDF 463<br>Fig. RD07K060<br>Ancillary; not in grain path</span></td><td>Photograph the lower rear cooling compartment with the drain/clean-out plug identifiable, then a close view of the plug, seating surface and accumulated dust after safe removal.</td><td><label><input type="checkbox"> Present</label><label><input type="checkbox"> Removes</label><label><input type="checkbox"> Seals</label><label><input type="checkbox"> Dust</label></td><td><textarea aria-label="Radiator clean-out plug finding"></textarea></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="signoff-grid">
+        <label>Parts requiring confirmation or replacement<textarea></textarea></label>
+        <label>Unresolved access points / photographs still required<textarea></textarea></label>
+        <label>Inspector sign-off <input type="text"></label>
+        <label>Dealer / technician confirmation <input type="text"></label>
       </div>
     </section>
 
